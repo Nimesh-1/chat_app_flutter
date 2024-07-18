@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_cubit.dart';
+part of 'home_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,60 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LoginState {
-  int get count => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+mixin _$HomeState {
+  bool get isUserLoggedIn => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int count, String name) initial,
+    required TResult Function(bool isUserLoggedIn) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int count, String name)? initial,
+    TResult? Function(bool isUserLoggedIn)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int count, String name)? initial,
+    TResult Function(bool isUserLoggedIn)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_initial value) initial,
+    required TResult Function(_Initial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_initial value)? initial,
+    TResult? Function(_Initial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_initial value)? initial,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginStateCopyWith<LoginState> get copyWith =>
+  $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $HomeStateCopyWith<$Res> {
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
+      _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({int count, String name});
+  $Res call({bool isUserLoggedIn});
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
+    implements $HomeStateCopyWith<$Res> {
+  _$HomeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -78,119 +76,106 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? count = null,
-    Object? name = null,
+    Object? isUserLoggedIn = null,
   }) {
     return _then(_value.copyWith(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      isUserLoggedIn: null == isUserLoggedIn
+          ? _value.isUserLoggedIn
+          : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$initialImplCopyWith<$Res>
-    implements $LoginStateCopyWith<$Res> {
-  factory _$$initialImplCopyWith(
-          _$initialImpl value, $Res Function(_$initialImpl) then) =
-      __$$initialImplCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count, String name});
+  $Res call({bool isUserLoggedIn});
 }
 
 /// @nodoc
-class __$$initialImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$initialImpl>
-    implements _$$initialImplCopyWith<$Res> {
-  __$$initialImplCopyWithImpl(
-      _$initialImpl _value, $Res Function(_$initialImpl) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? count = null,
-    Object? name = null,
+    Object? isUserLoggedIn = null,
   }) {
-    return _then(_$initialImpl(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$InitialImpl(
+      isUserLoggedIn: null == isUserLoggedIn
+          ? _value.isUserLoggedIn
+          : isUserLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$initialImpl extends _initial {
-  const _$initialImpl({this.count = 0, this.name = ''}) : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl({this.isUserLoggedIn = true}) : super._();
 
   @override
   @JsonKey()
-  final int count;
-  @override
-  @JsonKey()
-  final String name;
+  final bool isUserLoggedIn;
 
   @override
   String toString() {
-    return 'LoginState.initial(count: $count, name: $name)';
+    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$initialImpl &&
-            (identical(other.count, count) || other.count == count) &&
-            (identical(other.name, name) || other.name == name));
+            other is _$InitialImpl &&
+            (identical(other.isUserLoggedIn, isUserLoggedIn) ||
+                other.isUserLoggedIn == isUserLoggedIn));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, count, name);
+  int get hashCode => Object.hash(runtimeType, isUserLoggedIn);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$initialImplCopyWith<_$initialImpl> get copyWith =>
-      __$$initialImplCopyWithImpl<_$initialImpl>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int count, String name) initial,
+    required TResult Function(bool isUserLoggedIn) initial,
   }) {
-    return initial(count, name);
+    return initial(isUserLoggedIn);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int count, String name)? initial,
+    TResult? Function(bool isUserLoggedIn)? initial,
   }) {
-    return initial?.call(count, name);
+    return initial?.call(isUserLoggedIn);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int count, String name)? initial,
+    TResult Function(bool isUserLoggedIn)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(count, name);
+      return initial(isUserLoggedIn);
     }
     return orElse();
   }
@@ -198,7 +183,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_initial value) initial,
+    required TResult Function(_Initial value) initial,
   }) {
     return initial(this);
   }
@@ -206,7 +191,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_initial value)? initial,
+    TResult? Function(_Initial value)? initial,
   }) {
     return initial?.call(this);
   }
@@ -214,7 +199,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_initial value)? initial,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -224,16 +209,14 @@ class _$initialImpl extends _initial {
   }
 }
 
-abstract class _initial extends LoginState {
-  const factory _initial({final int count, final String name}) = _$initialImpl;
-  const _initial._() : super._();
+abstract class _Initial extends HomeState {
+  const factory _Initial({final bool isUserLoggedIn}) = _$InitialImpl;
+  const _Initial._() : super._();
 
   @override
-  int get count;
-  @override
-  String get name;
+  bool get isUserLoggedIn;
   @override
   @JsonKey(ignore: true)
-  _$$initialImplCopyWith<_$initialImpl> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

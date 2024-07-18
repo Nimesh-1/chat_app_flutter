@@ -25,9 +25,11 @@ import '../domain/use%20cases/user_use_cases/sign_in_usecase.dart' as _i16;
 import '../domain/use%20cases/user_use_cases/sign_out_usecase.dart' as _i17;
 import '../domain/use%20cases/user_use_cases/sign_up_usecase.dart' as _i18;
 import '../domain/use%20cases/user_use_cases/update_user_usecase.dart' as _i19;
+import '../presentation/views/home/cubit/home_cubit.dart' as _i21;
 import '../presentation/views/login/cubit/login_cubit.dart' as _i3;
 import '../presentation/views/sign_in/cubit/signin_cubit.dart' as _i4;
-import '../presentation/views/sign_up/cubit/signup_cubit.dart' as _i5;
+import '../presentation/views/sign_up/cubit/signup_cubit.dart' as _i20;
+import '../presentation/views/splash/cubit/splash_cubit.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,7 +44,7 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i3.LoginCubit>(() => _i3.LoginCubit());
     gh.factory<_i4.SigninCubit>(() => _i4.SigninCubit());
-    gh.factory<_i5.SignupCubit>(() => _i5.SignupCubit());
+    gh.factory<_i5.SplashCubit>(() => _i5.SplashCubit());
     gh.factory<_i6.UserService>(() => _i7.UserServiceImpl());
     gh.factory<_i8.UserCacheDatasource>(() => _i9.UserCacheDatasourceImpl());
     gh.factory<_i10.UserCloudDatasource>(
@@ -63,6 +65,11 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i18.SignUpUsecase(gh<_i13.UserRepository>()));
     gh.factory<_i19.UpdateUserUsecase>(
         () => _i19.UpdateUserUsecase(gh<_i13.UserRepository>()));
+    gh.factory<_i20.SignupCubit>(() => _i20.SignupCubit(
+          gh<_i18.SignUpUsecase>(),
+          gh<_i19.UpdateUserUsecase>(),
+        ));
+    gh.factory<_i21.HomeCubit>(() => _i21.HomeCubit(gh<_i17.SignOutUsecase>()));
     return this;
   }
 }

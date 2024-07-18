@@ -1,5 +1,6 @@
 import 'package:chat_app/common/injections.dart';
 import 'package:chat_app/presentation/manager/route_manager.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -7,7 +8,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: 'chat-2dd4e',
+    name: 'chatapp-80074',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   configureDependencies();
