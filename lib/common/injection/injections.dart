@@ -1,4 +1,4 @@
-import 'package:chat_app/common/injections.config.dart';
+import 'package:chat_app/common/injection/injections.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 

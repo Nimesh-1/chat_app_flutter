@@ -4,5 +4,7 @@ part of 'signin_cubit.dart';
 class SigninState with _$SigninState {
   const SigninState._();
 
-  const factory SigninState.initial() = _initial;
+  const factory SigninState.initial({
+    @Default(DataResource.inital()) DataResource<UserCredential> signInResource,
+  }) = _Initial;
 }

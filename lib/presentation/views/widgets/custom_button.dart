@@ -6,11 +6,13 @@ class CustomButton extends StatelessWidget {
       this.buttonText,
       required this.onTap,
       this.isSolidButton = true,
-      this.buttonColor});
+      this.buttonColor,
+      this.isLoading = false});
   final String? buttonText;
   final VoidCallback onTap;
   final bool isSolidButton;
   final Color? buttonColor;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,22 @@ class CustomButton extends StatelessWidget {
           color: isSolidButton ? Colors.black : (buttonColor ?? Colors.white),
         ),
         child: Center(
-          child: Text(
-            buttonText ?? 'custom Button',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color:
-                  isSolidButton ? Colors.black : (buttonColor ?? Colors.white),
-            ),
-          ),
+          child: isLoading
+              ? CircularProgressIndicator(
+                  color: isSolidButton
+                      ? Colors.white
+                      : (buttonColor ?? Colors.black),
+                )
+              : Text(
+                  buttonText ?? 'custom Button',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: isSolidButton
+                        ? Colors.white
+                        : (buttonColor ?? Colors.black),
+                  ),
+                ),
         ),
       ),
     );

@@ -11,9 +11,13 @@ class HomeCubit extends Cubit<HomeState> {
   final SignOutUsecase _signOutUseCase;
   HomeCubit(this._signOutUseCase) : super(const HomeState.initial());
 
-  void signOut() async {
+  Future<void> signOut() async {
     var signedOut = await _signOutUseCase.signout();
 
     emit(state.copyWith(isUserLoggedIn: !signedOut));
+  }
+
+  void onTabTapped(int index) {
+    emit(state.copyWith(currentButtomNavigationIndex: index));
   }
 }

@@ -23,6 +23,18 @@ class SignupCubit extends Cubit<SignupState> {
   TextEditingController dobController = TextEditingController();
 
   Future<bool> createAccount() async {
+    if (nameController.text.isEmpty) {
+      emit(state.copyWith(nameError: 'Name cant be empty'));
+    }
+    if (emailController.text.isEmpty) {
+      emit(state.copyWith(emailError: 'email cant be empty'));
+    }
+    if (passwordController.text.isEmpty) {
+      emit(state.copyWith(passwordError: 'password cant be empty'));
+    }
+    if (dobController.text.isEmpty) {
+      emit(state.copyWith(dobError: 'Dob cant be empty'));
+    }
     if (emailController.text.isNotEmpty &&
         passwordController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&
@@ -30,7 +42,7 @@ class SignupCubit extends Cubit<SignupState> {
       var isRegister = await _signUpUsecase.signUpWithEmailPassword(
           emailController.text, passwordController.text);
 
-      if (isRegister) {
+      if (isRegister == true) {
         return await _updateUserUsecase.updateUser(UserModel(
             name: nameController.text,
             email: emailController.text,

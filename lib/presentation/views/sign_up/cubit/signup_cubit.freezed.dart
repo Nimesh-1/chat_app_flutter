@@ -16,37 +16,51 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SignupState {
+  String? get nameError => throw _privateConstructorUsedError;
+  String? get emailError => throw _privateConstructorUsedError;
+  String? get passwordError => throw _privateConstructorUsedError;
+  String? get dobError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_initial value) initial,
+    required TResult Function(_Initial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_initial value)? initial,
+    TResult? Function(_Initial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_initial value)? initial,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SignupStateCopyWith<SignupState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +69,12 @@ abstract class $SignupStateCopyWith<$Res> {
   factory $SignupStateCopyWith(
           SignupState value, $Res Function(SignupState) then) =
       _$SignupStateCopyWithImpl<$Res, SignupState>;
+  @useResult
+  $Res call(
+      {String? nameError,
+      String? emailError,
+      String? passwordError,
+      String? dobError});
 }
 
 /// @nodoc
@@ -66,67 +86,171 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nameError = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? dobError = freezed,
+  }) {
+    return _then(_value.copyWith(
+      nameError: freezed == nameError
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dobError: freezed == dobError
+          ? _value.dobError
+          : dobError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$initialImplCopyWith<$Res> {
-  factory _$$initialImplCopyWith(
-          _$initialImpl value, $Res Function(_$initialImpl) then) =
-      __$$initialImplCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $SignupStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? nameError,
+      String? emailError,
+      String? passwordError,
+      String? dobError});
 }
 
 /// @nodoc
-class __$$initialImplCopyWithImpl<$Res>
-    extends _$SignupStateCopyWithImpl<$Res, _$initialImpl>
-    implements _$$initialImplCopyWith<$Res> {
-  __$$initialImplCopyWithImpl(
-      _$initialImpl _value, $Res Function(_$initialImpl) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SignupStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nameError = freezed,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
+    Object? dobError = freezed,
+  }) {
+    return _then(_$InitialImpl(
+      nameError: freezed == nameError
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dobError: freezed == dobError
+          ? _value.dobError
+          : dobError // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$initialImpl extends _initial {
-  const _$initialImpl() : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl(
+      {this.nameError = null,
+      this.emailError = null,
+      this.passwordError = null,
+      this.dobError = null})
+      : super._();
+
+  @override
+  @JsonKey()
+  final String? nameError;
+  @override
+  @JsonKey()
+  final String? emailError;
+  @override
+  @JsonKey()
+  final String? passwordError;
+  @override
+  @JsonKey()
+  final String? dobError;
 
   @override
   String toString() {
-    return 'SignupState.initial()';
+    return 'SignupState.initial(nameError: $nameError, emailError: $emailError, passwordError: $passwordError, dobError: $dobError)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$initialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.nameError, nameError) ||
+                other.nameError == nameError) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) ||
+                other.passwordError == passwordError) &&
+            (identical(other.dobError, dobError) ||
+                other.dobError == dobError));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, nameError, emailError, passwordError, dobError);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)
+        initial,
   }) {
-    return initial();
+    return initial(nameError, emailError, passwordError, dobError);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
   }) {
-    return initial?.call();
+    return initial?.call(nameError, emailError, passwordError, dobError);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? nameError, String? emailError,
+            String? passwordError, String? dobError)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(nameError, emailError, passwordError, dobError);
     }
     return orElse();
   }
@@ -134,7 +258,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_initial value) initial,
+    required TResult Function(_Initial value) initial,
   }) {
     return initial(this);
   }
@@ -142,7 +266,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_initial value)? initial,
+    TResult? Function(_Initial value)? initial,
   }) {
     return initial?.call(this);
   }
@@ -150,7 +274,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_initial value)? initial,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -160,7 +284,24 @@ class _$initialImpl extends _initial {
   }
 }
 
-abstract class _initial extends SignupState {
-  const factory _initial() = _$initialImpl;
-  const _initial._() : super._();
+abstract class _Initial extends SignupState {
+  const factory _Initial(
+      {final String? nameError,
+      final String? emailError,
+      final String? passwordError,
+      final String? dobError}) = _$InitialImpl;
+  const _Initial._() : super._();
+
+  @override
+  String? get nameError;
+  @override
+  String? get emailError;
+  @override
+  String? get passwordError;
+  @override
+  String? get dobError;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

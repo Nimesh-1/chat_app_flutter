@@ -1,4 +1,4 @@
-import 'package:chat_app/common/injections.dart';
+import 'package:chat_app/common/injection/injections.dart';
 import 'package:chat_app/presentation/manager/route_manager.dart';
 import 'package:chat_app/presentation/views/splash/cubit/splash_cubit.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +25,7 @@ class SplashScreen extends StatelessWidget {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   MobileROutes.homeRoute, (route) => false);
             } else {
+              debugPrint('hello errr');
               Navigator.of(context).pushNamedAndRemoveUntil(
                   MobileROutes.loginroute, (route) => false);
             }

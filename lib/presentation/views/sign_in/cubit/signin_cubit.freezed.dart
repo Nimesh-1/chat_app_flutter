@@ -16,37 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SigninState {
+  DataResource<UserCredential> get signInResource =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(DataResource<UserCredential> signInResource)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(DataResource<UserCredential> signInResource)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(DataResource<UserCredential> signInResource)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_initial value) initial,
+    required TResult Function(_Initial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_initial value)? initial,
+    TResult? Function(_Initial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_initial value)? initial,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SigninStateCopyWith<SigninState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +62,8 @@ abstract class $SigninStateCopyWith<$Res> {
   factory $SigninStateCopyWith(
           SigninState value, $Res Function(SigninState) then) =
       _$SigninStateCopyWithImpl<$Res, SigninState>;
+  @useResult
+  $Res call({DataResource<UserCredential> signInResource});
 }
 
 /// @nodoc
@@ -66,67 +75,112 @@ class _$SigninStateCopyWithImpl<$Res, $Val extends SigninState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? signInResource = null,
+  }) {
+    return _then(_value.copyWith(
+      signInResource: null == signInResource
+          ? _value.signInResource
+          : signInResource // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserCredential>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$initialImplCopyWith<$Res> {
-  factory _$$initialImplCopyWith(
-          _$initialImpl value, $Res Function(_$initialImpl) then) =
-      __$$initialImplCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $SigninStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DataResource<UserCredential> signInResource});
 }
 
 /// @nodoc
-class __$$initialImplCopyWithImpl<$Res>
-    extends _$SigninStateCopyWithImpl<$Res, _$initialImpl>
-    implements _$$initialImplCopyWith<$Res> {
-  __$$initialImplCopyWithImpl(
-      _$initialImpl _value, $Res Function(_$initialImpl) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SigninStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? signInResource = null,
+  }) {
+    return _then(_$InitialImpl(
+      signInResource: null == signInResource
+          ? _value.signInResource
+          : signInResource // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserCredential>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$initialImpl extends _initial {
-  const _$initialImpl() : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl({this.signInResource = const DataResource.inital()})
+      : super._();
+
+  @override
+  @JsonKey()
+  final DataResource<UserCredential> signInResource;
 
   @override
   String toString() {
-    return 'SigninState.initial()';
+    return 'SigninState.initial(signInResource: $signInResource)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$initialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.signInResource, signInResource) ||
+                other.signInResource == signInResource));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, signInResource);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(DataResource<UserCredential> signInResource)
+        initial,
   }) {
-    return initial();
+    return initial(signInResource);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(DataResource<UserCredential> signInResource)? initial,
   }) {
-    return initial?.call();
+    return initial?.call(signInResource);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(DataResource<UserCredential> signInResource)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(signInResource);
     }
     return orElse();
   }
@@ -134,7 +188,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_initial value) initial,
+    required TResult Function(_Initial value) initial,
   }) {
     return initial(this);
   }
@@ -142,7 +196,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_initial value)? initial,
+    TResult? Function(_Initial value)? initial,
   }) {
     return initial?.call(this);
   }
@@ -150,7 +204,7 @@ class _$initialImpl extends _initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_initial value)? initial,
+    TResult Function(_Initial value)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -160,7 +214,15 @@ class _$initialImpl extends _initial {
   }
 }
 
-abstract class _initial extends SigninState {
-  const factory _initial() = _$initialImpl;
-  const _initial._() : super._();
+abstract class _Initial extends SigninState {
+  const factory _Initial({final DataResource<UserCredential> signInResource}) =
+      _$InitialImpl;
+  const _Initial._() : super._();
+
+  @override
+  DataResource<UserCredential> get signInResource;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

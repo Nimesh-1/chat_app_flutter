@@ -1,16 +1,32 @@
+import 'package:chat_app/common/default_usecase/default_usecase.dart';
 import 'package:chat_app/domain/repositories/user_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class SignInUsecase {
+class SignInUsecase
+    extends DefaultUseCase<SignInWithEmailInput, UserCredential> {
   final UserRepository _userRepository;
 
   SignInUsecase(this._userRepository);
 
-  Future<bool> signinWithEmailPassword(
-    String emailAddress,
-    String password,
-  ) {
-    return _userRepository.signUpWithEmailPassword(emailAddress, password);
+  // Future<String> signinWithEmailPassword(
+  //   String emailAddress,
+  //   String password,
+  // ) {
+  //   return _userRepository.signInWithEmailPassword(emailAddress, password);
+  // }
+
+  @override
+  Future<UserCredential> run(SignInWithEmailInput input) {
+    return _userRepository.signInWithEmailPassword(
+        input.emailAddress, input.password);
   }
+}
+
+class SignInWithEmailInput {
+  String emailAddress;
+  String password;
+
+  SignInWithEmailInput(this.emailAddress, this.password);
 }

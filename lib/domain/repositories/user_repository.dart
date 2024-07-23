@@ -1,13 +1,14 @@
 import 'package:chat_app/data/models/user_model.dart';
 import 'package:chat_app/domain/entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class UserRepository {
-  Future<bool> signinWithEmailPassword(
+  Future<UserCredential> signInWithEmailPassword(
     String emailAddress,
     String password,
   );
 
-  Future<bool> signUpWithEmailPassword(
+  Future<UserCredential> signUpWithEmailPassword(
     String emailAddress,
     String password,
   );

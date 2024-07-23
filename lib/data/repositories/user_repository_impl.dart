@@ -4,6 +4,7 @@ import 'package:chat_app/data/data_source/user/user_datasource_factory.dart';
 import 'package:chat_app/data/models/user_model.dart';
 import 'package:chat_app/domain/entities/user_entity.dart';
 import 'package:chat_app/domain/repositories/user_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UserRepository)
@@ -28,13 +29,15 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<bool> signUpWithEmailPassword(String emailAddress, String password) {
+  Future<UserCredential> signUpWithEmailPassword(
+      String emailAddress, String password) {
     return cloudDatasource.signUpWithEmailPassword(emailAddress, password);
   }
 
   @override
-  Future<bool> signinWithEmailPassword(String emailAddress, String password) {
-    return cloudDatasource.signinWithEmailPassword(emailAddress, password);
+  Future<UserCredential> signInWithEmailPassword(
+      String emailAddress, String password) {
+    return cloudDatasource.signInWithEmailPassword(emailAddress, password);
   }
 
   @override

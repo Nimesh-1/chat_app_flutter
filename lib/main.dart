@@ -1,4 +1,4 @@
-import 'package:chat_app/common/injections.dart';
+import 'package:chat_app/common/injection/injections.dart';
 import 'package:chat_app/presentation/manager/route_manager.dart';
 
 import 'package:flutter/material.dart';

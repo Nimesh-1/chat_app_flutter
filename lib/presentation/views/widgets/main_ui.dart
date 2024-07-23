@@ -35,6 +35,7 @@ Widget mainUI({required LoginCubit cubit, required BuildContext context}) {
                 onTap: () {
                   Navigator.of(context).pushNamed(MobileROutes.signInRoute);
                 },
+                buttonText: 'Login',
               ),
               const SizedBox(height: 16),
               CustomButton(
@@ -42,6 +43,7 @@ Widget mainUI({required LoginCubit cubit, required BuildContext context}) {
                   Navigator.of(context).pushNamed(MobileROutes.signUpRoute);
                 },
                 isSolidButton: false,
+                buttonText: 'Create',
               ),
             ],
           ),

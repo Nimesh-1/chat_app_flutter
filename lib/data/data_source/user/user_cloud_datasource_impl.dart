@@ -2,6 +2,7 @@ import 'package:chat_app/data/data_source/user/user_cloud_datasource.dart';
 import 'package:chat_app/data/firebase/service/user_service.dart';
 import 'package:chat_app/data/models/user_model.dart';
 import 'package:chat_app/domain/entities/user_entity.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UserCloudDatasource)
@@ -21,13 +22,15 @@ class UserCloudDatasourceImpl extends UserCloudDatasource {
   }
 
   @override
-  Future<bool> signUpWithEmailPassword(String emailAddress, String password) {
+  Future<UserCredential> signUpWithEmailPassword(
+      String emailAddress, String password) {
     return _userService.signUpWithEmailPassword(emailAddress, password);
   }
 
   @override
-  Future<bool> signinWithEmailPassword(String emailAddress, String password) {
-    return _userService.signinWithEmailPassword(emailAddress, password);
+  Future<UserCredential> signInWithEmailPassword(
+      String emailAddress, String password) {
+    return _userService.signInWithEmailPassword(emailAddress, password);
   }
 
   @override
