@@ -37,4 +37,8 @@ class SigninCubit extends Cubit<SigninState> {
       emit(state.copyWith(signInResource: const DataResource.inital()));
     }
   }
+
+  void passwordIconToggle() {
+    emit(state.copyWith(isPasswordHidden: !state.isPasswordHidden));
+  }
 }

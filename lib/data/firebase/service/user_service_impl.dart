@@ -16,9 +16,8 @@ class UserServiceImpl extends UserService {
   }
 
   @override
-  Future<bool> signOut() async {
+  Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
-    return Future.value(true);
   }
 
   @override
@@ -69,13 +68,9 @@ class UserServiceImpl extends UserService {
   }
 
   @override
-  Future<bool> updateUser(UserModel input) async {
-    try {
-      await FirestoreDatabaseReference.usersColRef().add(input.toDocument());
-      return Future.value(true);
-    } catch (e) {
-      print(e);
-      return Future.value(false);
-    }
+  Future<void> updateUser(UserModel input) async {
+    await FirestoreDatabaseReference.usersColRef()
+        .doc('is')
+        .set(input.toDocument());
   }
 }

@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'flutter demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
-        useMaterial3: true,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
+      themeMode: ThemeMode.dark,
       onGenerateRoute: RouteManager.ongenerateRoute,
     );
   }

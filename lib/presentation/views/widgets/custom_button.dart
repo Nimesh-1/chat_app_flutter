@@ -22,24 +22,26 @@ class CustomButton extends StatelessWidget {
         height: 60,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: isSolidButton ? Colors.black : (buttonColor ?? Colors.white),
+          color: isSolidButton
+              ? (buttonColor ?? Colors.white)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(width: 1, color: buttonColor ?? Colors.white),
         ),
         child: Center(
           child: isLoading
               ? CircularProgressIndicator(
                   color: isSolidButton
-                      ? Colors.white
-                      : (buttonColor ?? Colors.black),
-                )
+                      ? Colors.black87
+                      : (buttonColor ?? Colors.white))
               : Text(
-                  buttonText ?? 'custom Button',
+                  buttonText ?? 'Custom Button',
                   style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: isSolidButton
-                        ? Colors.white
-                        : (buttonColor ?? Colors.black),
-                  ),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: isSolidButton
+                          ? Colors.black87
+                          : (buttonColor ?? Colors.white)),
                 ),
         ),
       ),

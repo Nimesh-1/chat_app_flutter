@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:chat_app/common/data_resources/data_resource.dart';
 import 'package:chat_app/data/models/user_model.dart';
 import 'package:chat_app/domain/use%20cases/user_use_cases/sign_up_usecase.dart';
 import 'package:chat_app/domain/use%20cases/user_use_cases/update_user_usecase.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +24,7 @@ class SignupCubit extends Cubit<SignupState> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController dobController = TextEditingController();
 
-  Future<bool> createAccount() async {
+  Future<void> createAccount() async {
     if (nameController.text.isEmpty) {
       emit(state.copyWith(nameError: 'Name cant be empty'));
     }
@@ -39,21 +41,26 @@ class SignupCubit extends Cubit<SignupState> {
         passwordController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&
         dobController.text.isNotEmpty) {
-      var isRegister = await _signUpUsecase.signUpWithEmailPassword(
-          emailController.text, passwordController.text);
-
-      if (isRegister == true) {
-        return await _updateUserUsecase.updateUser(UserModel(
-            name: nameController.text,
-            email: emailController.text,
-            dob: dobController.text));
-      } else {
-        debugPrint('Account not created');
-        return false;
-      }
+      await _signUpUsecase.invoke(
+        callback: (response) async {
+          if (response.isSuccess()) {
+            emit(state.copyWith(signUpResource: response));
+            await _updateUserUsecase.invoke(
+                callback: (response) {},
+                input: UserModel(
+                  name: nameController.text,
+                  email: emailController.text,
+                  dob: dobController.text,
+                ));
+          }
+        },
+        input: SignUpWithEmailInput(
+          emailController.text,
+          passwordController.text,
+        ),
+      );
     } else {
       debugPrint('Enter email and Password');
-      return false;
     }
   }
 }

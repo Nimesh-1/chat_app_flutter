@@ -20,24 +20,38 @@ mixin _$SignupState {
   String? get emailError => throw _privateConstructorUsedError;
   String? get passwordError => throw _privateConstructorUsedError;
   String? get dobError => throw _privateConstructorUsedError;
+  DataResource<UserCredential> get signUpResource =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? nameError, String? emailError,
-            String? passwordError, String? dobError)
+    required TResult Function(
+            String? nameError,
+            String? emailError,
+            String? passwordError,
+            String? dobError,
+            DataResource<UserCredential> signUpResource)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? nameError, String? emailError,
-            String? passwordError, String? dobError)?
+    TResult? Function(
+            String? nameError,
+            String? emailError,
+            String? passwordError,
+            String? dobError,
+            DataResource<UserCredential> signUpResource)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? nameError, String? emailError,
-            String? passwordError, String? dobError)?
+    TResult Function(
+            String? nameError,
+            String? emailError,
+            String? passwordError,
+            String? dobError,
+            DataResource<UserCredential> signUpResource)?
         initial,
     required TResult orElse(),
   }) =>
@@ -74,7 +88,8 @@ abstract class $SignupStateCopyWith<$Res> {
       {String? nameError,
       String? emailError,
       String? passwordError,
-      String? dobError});
+      String? dobError,
+      DataResource<UserCredential> signUpResource});
 }
 
 /// @nodoc
@@ -94,6 +109,7 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
     Object? emailError = freezed,
     Object? passwordError = freezed,
     Object? dobError = freezed,
+    Object? signUpResource = null,
   }) {
     return _then(_value.copyWith(
       nameError: freezed == nameError
@@ -112,6 +128,10 @@ class _$SignupStateCopyWithImpl<$Res, $Val extends SignupState>
           ? _value.dobError
           : dobError // ignore: cast_nullable_to_non_nullable
               as String?,
+      signUpResource: null == signUpResource
+          ? _value.signUpResource
+          : signUpResource // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserCredential>,
     ) as $Val);
   }
 }
@@ -128,7 +148,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       {String? nameError,
       String? emailError,
       String? passwordError,
-      String? dobError});
+      String? dobError,
+      DataResource<UserCredential> signUpResource});
 }
 
 /// @nodoc
@@ -146,6 +167,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? emailError = freezed,
     Object? passwordError = freezed,
     Object? dobError = freezed,
+    Object? signUpResource = null,
   }) {
     return _then(_$InitialImpl(
       nameError: freezed == nameError
@@ -164,6 +186,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.dobError
           : dobError // ignore: cast_nullable_to_non_nullable
               as String?,
+      signUpResource: null == signUpResource
+          ? _value.signUpResource
+          : signUpResource // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserCredential>,
     ));
   }
 }
@@ -175,7 +201,8 @@ class _$InitialImpl extends _Initial {
       {this.nameError = null,
       this.emailError = null,
       this.passwordError = null,
-      this.dobError = null})
+      this.dobError = null,
+      this.signUpResource = const DataResource.inital()})
       : super._();
 
   @override
@@ -190,10 +217,13 @@ class _$InitialImpl extends _Initial {
   @override
   @JsonKey()
   final String? dobError;
+  @override
+  @JsonKey()
+  final DataResource<UserCredential> signUpResource;
 
   @override
   String toString() {
-    return 'SignupState.initial(nameError: $nameError, emailError: $emailError, passwordError: $passwordError, dobError: $dobError)';
+    return 'SignupState.initial(nameError: $nameError, emailError: $emailError, passwordError: $passwordError, dobError: $dobError, signUpResource: $signUpResource)';
   }
 
   @override
@@ -208,12 +238,14 @@ class _$InitialImpl extends _Initial {
             (identical(other.passwordError, passwordError) ||
                 other.passwordError == passwordError) &&
             (identical(other.dobError, dobError) ||
-                other.dobError == dobError));
+                other.dobError == dobError) &&
+            (identical(other.signUpResource, signUpResource) ||
+                other.signUpResource == signUpResource));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, nameError, emailError, passwordError, dobError);
+  int get hashCode => Object.hash(runtimeType, nameError, emailError,
+      passwordError, dobError, signUpResource);
 
   @JsonKey(ignore: true)
   @override
@@ -224,33 +256,48 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? nameError, String? emailError,
-            String? passwordError, String? dobError)
+    required TResult Function(
+            String? nameError,
+            String? emailError,
+            String? passwordError,
+            String? dobError,
+            DataResource<UserCredential> signUpResource)
         initial,
   }) {
-    return initial(nameError, emailError, passwordError, dobError);
+    return initial(
+        nameError, emailError, passwordError, dobError, signUpResource);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? nameError, String? emailError,
-            String? passwordError, String? dobError)?
+    TResult? Function(
+            String? nameError,
+            String? emailError,
+            String? passwordError,
+            String? dobError,
+            DataResource<UserCredential> signUpResource)?
         initial,
   }) {
-    return initial?.call(nameError, emailError, passwordError, dobError);
+    return initial?.call(
+        nameError, emailError, passwordError, dobError, signUpResource);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? nameError, String? emailError,
-            String? passwordError, String? dobError)?
+    TResult Function(
+            String? nameError,
+            String? emailError,
+            String? passwordError,
+            String? dobError,
+            DataResource<UserCredential> signUpResource)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(nameError, emailError, passwordError, dobError);
+      return initial(
+          nameError, emailError, passwordError, dobError, signUpResource);
     }
     return orElse();
   }
@@ -289,7 +336,8 @@ abstract class _Initial extends SignupState {
       {final String? nameError,
       final String? emailError,
       final String? passwordError,
-      final String? dobError}) = _$InitialImpl;
+      final String? dobError,
+      final DataResource<UserCredential> signUpResource}) = _$InitialImpl;
   const _Initial._() : super._();
 
   @override
@@ -300,6 +348,8 @@ abstract class _Initial extends SignupState {
   String? get passwordError;
   @override
   String? get dobError;
+  @override
+  DataResource<UserCredential> get signUpResource;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

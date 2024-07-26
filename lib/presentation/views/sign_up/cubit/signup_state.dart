@@ -8,5 +8,6 @@ class SignupState with _$SignupState {
     @Default(null) String? emailError,
     @Default(null) String? passwordError,
     @Default(null) String? dobError,
+    @Default(DataResource.inital()) DataResource<UserCredential> signUpResource,
   }) = _Initial;
 }

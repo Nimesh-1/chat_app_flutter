@@ -17,7 +17,7 @@ class UserCloudDatasourceImpl extends UserCloudDatasource {
   }
 
   @override
-  Future<bool> signOut() {
+  Future<void> signOut() {
     return _userService.signOut();
   }
 
@@ -34,7 +34,7 @@ class UserCloudDatasourceImpl extends UserCloudDatasource {
   }
 
   @override
-  Future<bool> updateUser(UserModel input) {
+  Future<void> updateUser(UserModel input) {
     return _userService.updateUser(input);
   }
 }

@@ -2,6 +2,7 @@ import 'package:chat_app/common/injection/injections.dart';
 import 'package:chat_app/presentation/manager/route_manager.dart';
 import 'package:chat_app/presentation/views/sign_in/cubit/signin_cubit.dart';
 import 'package:chat_app/presentation/views/widgets/custom_button.dart';
+import 'package:chat_app/presentation/views/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class SignInScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Signup'),
+          title: const Text('Sign In'),
           centerTitle: true,
         ),
         body: SafeArea(
@@ -26,21 +27,22 @@ class SignInScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                TextField(
+                CustomTextField(
                   controller: cubit.emailController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter E-mail',
-                  ),
+                  label: 'email',
+                  hintText: 'enter email',
                 ),
                 const SizedBox(height: 16),
-                TextField(
-                  controller: cubit.passwordController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter Password',
-                  ),
-                  keyboardType: TextInputType.visiblePassword,
+                BlocBuilder<SigninCubit, SigninState>(
+                  builder: (context, state) {
+                    return CustomTextField(
+                      controller: cubit.passwordController,
+                      label: 'Password',
+                      hintText: 'enter Password',
+                      isPasswordHidden: state.isPasswordHidden,
+                      onPasswordIconTap: cubit.passwordIconToggle,
+                    );
+                  },
                 ),
                 const SizedBox(height: 16),
                 BlocBuilder<SigninCubit, SigninState>(

@@ -13,9 +13,9 @@ abstract class UserRepository {
     String password,
   );
 
-  Future<bool> signOut();
+  Future<void> signOut();
 
-  Future<bool> updateUser(
+  Future<void> updateUser(
     UserModel input,
   );
 

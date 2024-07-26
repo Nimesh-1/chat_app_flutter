@@ -6,5 +6,6 @@ class SigninState with _$SigninState {
 
   const factory SigninState.initial({
     @Default(DataResource.inital()) DataResource<UserCredential> signInResource,
+    @Default(true) bool isPasswordHidden,
   }) = _Initial;
 }

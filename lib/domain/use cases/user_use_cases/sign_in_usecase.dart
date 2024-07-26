@@ -9,14 +9,6 @@ class SignInUsecase
   final UserRepository _userRepository;
 
   SignInUsecase(this._userRepository);
-
-  // Future<String> signinWithEmailPassword(
-  //   String emailAddress,
-  //   String password,
-  // ) {
-  //   return _userRepository.signInWithEmailPassword(emailAddress, password);
-  // }
-
   @override
   Future<UserCredential> run(SignInWithEmailInput input) {
     return _userRepository.signInWithEmailPassword(

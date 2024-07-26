@@ -8,6 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:chat_app/domain/use%20cases/user_use_cases/get_user_usecase.dart'
+    as _i21;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -71,7 +73,10 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i17.SignUpUsecase>(),
           gh<_i18.UpdateUserUsecase>(),
         ));
-    gh.factory<_i21.HomeCubit>(() => _i21.HomeCubit(gh<_i16.SignOutUsecase>()));
+    gh.factory<_i21.HomeCubit>(() => _i21.HomeCubit(
+          gh<_i16.SignOutUsecase>(),
+          gh<_i21.GetUserUsecase>(),
+        ));
     return this;
   }
 }

@@ -18,22 +18,30 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HomeState {
   bool get isUserLoggedIn => throw _privateConstructorUsedError;
   int get currentButtomNavigationIndex => throw _privateConstructorUsedError;
+  String get screenName => throw _privateConstructorUsedError;
+  DataResource<UserEntity> get userResponse =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            bool isUserLoggedIn, int currentButtomNavigationIndex)
+            bool isUserLoggedIn,
+            int currentButtomNavigationIndex,
+            String screenName,
+            DataResource<UserEntity> userResponse)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isUserLoggedIn, int currentButtomNavigationIndex)?
+    TResult? Function(bool isUserLoggedIn, int currentButtomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isUserLoggedIn, int currentButtomNavigationIndex)?
+    TResult Function(bool isUserLoggedIn, int currentButtomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
     required TResult orElse(),
   }) =>
@@ -65,7 +73,11 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({bool isUserLoggedIn, int currentButtomNavigationIndex});
+  $Res call(
+      {bool isUserLoggedIn,
+      int currentButtomNavigationIndex,
+      String screenName,
+      DataResource<UserEntity> userResponse});
 }
 
 /// @nodoc
@@ -83,6 +95,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? isUserLoggedIn = null,
     Object? currentButtomNavigationIndex = null,
+    Object? screenName = null,
+    Object? userResponse = null,
   }) {
     return _then(_value.copyWith(
       isUserLoggedIn: null == isUserLoggedIn
@@ -93,6 +107,14 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.currentButtomNavigationIndex
           : currentButtomNavigationIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userResponse: null == userResponse
+          ? _value.userResponse
+          : userResponse // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserEntity>,
     ) as $Val);
   }
 }
@@ -105,7 +127,11 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isUserLoggedIn, int currentButtomNavigationIndex});
+  $Res call(
+      {bool isUserLoggedIn,
+      int currentButtomNavigationIndex,
+      String screenName,
+      DataResource<UserEntity> userResponse});
 }
 
 /// @nodoc
@@ -121,6 +147,8 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isUserLoggedIn = null,
     Object? currentButtomNavigationIndex = null,
+    Object? screenName = null,
+    Object? userResponse = null,
   }) {
     return _then(_$InitialImpl(
       isUserLoggedIn: null == isUserLoggedIn
@@ -131,6 +159,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.currentButtomNavigationIndex
           : currentButtomNavigationIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      screenName: null == screenName
+          ? _value.screenName
+          : screenName // ignore: cast_nullable_to_non_nullable
+              as String,
+      userResponse: null == userResponse
+          ? _value.userResponse
+          : userResponse // ignore: cast_nullable_to_non_nullable
+              as DataResource<UserEntity>,
     ));
   }
 }
@@ -139,7 +175,10 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl extends _Initial {
   const _$InitialImpl(
-      {this.isUserLoggedIn = true, this.currentButtomNavigationIndex = 0})
+      {this.isUserLoggedIn = true,
+      this.currentButtomNavigationIndex = 0,
+      this.screenName = 'Chat Screen',
+      this.userResponse = const DataResource.inital()})
       : super._();
 
   @override
@@ -148,10 +187,16 @@ class _$InitialImpl extends _Initial {
   @override
   @JsonKey()
   final int currentButtomNavigationIndex;
+  @override
+  @JsonKey()
+  final String screenName;
+  @override
+  @JsonKey()
+  final DataResource<UserEntity> userResponse;
 
   @override
   String toString() {
-    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn, currentButtomNavigationIndex: $currentButtomNavigationIndex)';
+    return 'HomeState.initial(isUserLoggedIn: $isUserLoggedIn, currentButtomNavigationIndex: $currentButtomNavigationIndex, screenName: $screenName, userResponse: $userResponse)';
   }
 
   @override
@@ -164,12 +209,16 @@ class _$InitialImpl extends _Initial {
             (identical(other.currentButtomNavigationIndex,
                     currentButtomNavigationIndex) ||
                 other.currentButtomNavigationIndex ==
-                    currentButtomNavigationIndex));
+                    currentButtomNavigationIndex) &&
+            (identical(other.screenName, screenName) ||
+                other.screenName == screenName) &&
+            (identical(other.userResponse, userResponse) ||
+                other.userResponse == userResponse));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isUserLoggedIn, currentButtomNavigationIndex);
+  int get hashCode => Object.hash(runtimeType, isUserLoggedIn,
+      currentButtomNavigationIndex, screenName, userResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -181,30 +230,38 @@ class _$InitialImpl extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            bool isUserLoggedIn, int currentButtomNavigationIndex)
+            bool isUserLoggedIn,
+            int currentButtomNavigationIndex,
+            String screenName,
+            DataResource<UserEntity> userResponse)
         initial,
   }) {
-    return initial(isUserLoggedIn, currentButtomNavigationIndex);
+    return initial(
+        isUserLoggedIn, currentButtomNavigationIndex, screenName, userResponse);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isUserLoggedIn, int currentButtomNavigationIndex)?
+    TResult? Function(bool isUserLoggedIn, int currentButtomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
   }) {
-    return initial?.call(isUserLoggedIn, currentButtomNavigationIndex);
+    return initial?.call(
+        isUserLoggedIn, currentButtomNavigationIndex, screenName, userResponse);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isUserLoggedIn, int currentButtomNavigationIndex)?
+    TResult Function(bool isUserLoggedIn, int currentButtomNavigationIndex,
+            String screenName, DataResource<UserEntity> userResponse)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(isUserLoggedIn, currentButtomNavigationIndex);
+      return initial(isUserLoggedIn, currentButtomNavigationIndex, screenName,
+          userResponse);
     }
     return orElse();
   }
@@ -241,13 +298,19 @@ class _$InitialImpl extends _Initial {
 abstract class _Initial extends HomeState {
   const factory _Initial(
       {final bool isUserLoggedIn,
-      final int currentButtomNavigationIndex}) = _$InitialImpl;
+      final int currentButtomNavigationIndex,
+      final String screenName,
+      final DataResource<UserEntity> userResponse}) = _$InitialImpl;
   const _Initial._() : super._();
 
   @override
   bool get isUserLoggedIn;
   @override
   int get currentButtomNavigationIndex;
+  @override
+  String get screenName;
+  @override
+  DataResource<UserEntity> get userResponse;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

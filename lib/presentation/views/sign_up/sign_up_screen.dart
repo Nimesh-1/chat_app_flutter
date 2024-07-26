@@ -1,6 +1,7 @@
 import 'package:chat_app/common/injection/injections.dart';
 import 'package:chat_app/presentation/manager/route_manager.dart';
 import 'package:chat_app/presentation/views/sign_up/cubit/signup_cubit.dart';
+import 'package:chat_app/presentation/views/widgets/custom_button.dart';
 import 'package:chat_app/presentation/views/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,23 +57,28 @@ class SignUpScreen extends StatelessWidget {
                       errorText: state.dobError,
                     ),
                     const SizedBox(height: 14),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          var isLoggedIn = await cubit.createAccount();
-                          if (isLoggedIn) {
-                            Navigator.of(context).pushNamedAndRemoveUntil(
+                    CustomButton(
+                      onTap: () async {
+                        await cubit.createAccount();
+                        if (state.signUpResource.isSuccess()) {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
                               MobileROutes.homeRoute,
-                              (Route<dynamic> route) => false,
-                            );
-                          } else {
-                            debugPrint('Something went wrong');
-                          }
-                        },
-                        child: const Text('create'),
-                      ),
-                    ),
+                              (Route<dynamic> route) => false);
+                        } else {
+                          debugPrint(state.signUpResource.failure?.message);
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                                state.signUpResource.failure?.message ?? ''),
+                            backgroundColor: Colors.green,
+                            elevation: 2,
+                            behavior: SnackBarBehavior.floating,
+                            margin: const EdgeInsets.all(16),
+                          ));
+                        }
+                      },
+                      buttonText: 'Create Account',
+                      buttonColor: Colors.blueAccent.shade100,
+                    )
                   ],
                 ),
               );

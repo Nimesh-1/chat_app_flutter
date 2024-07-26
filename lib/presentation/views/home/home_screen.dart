@@ -1,16 +1,18 @@
 import 'package:chat_app/common/injection/injections.dart';
-import 'package:chat_app/presentation/manager/route_manager.dart';
 import 'package:chat_app/presentation/views/home/cubit/home_cubit.dart';
+import 'package:chat_app/presentation/views/home/tabs/chat_screen.dart';
+import 'package:chat_app/presentation/views/home/tabs/profile_screen.dart';
+import 'package:chat_app/presentation/views/home/tabs/request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 var cubit = getIt<HomeCubit>();
 
 class HomeScreen extends StatelessWidget {
-  final List<Widget> _children = [
-    Tab1(),
-    Tab2(),
-    Tab3(),
+  final List<Widget> _tabScreen = [
+    const ChatScreen(),
+    const RequestScreen(),
+    ProfileScreen(cubit: cubit),
   ];
 
   @override
@@ -22,79 +24,33 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.orange,
-              title: const Text('Chat_app '),
+              title: Text(state.screenName),
             ),
-            body: _children[state.currentButtomNavigationIndex],
+            body: _tabScreen[state.currentButtomNavigationIndex],
             bottomNavigationBar: BottomNavigationBar(
               onTap: cubit.onTabTapped,
+              elevation: 20,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.blueGrey,
               currentIndex: state.currentButtomNavigationIndex,
               items: const [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'tab 1',
+                  icon: Icon(Icons.chat),
+                  label: 'Chats',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.business),
-                  label: 'tab 2',
+                  icon: Icon(Icons.request_quote),
+                  label: 'Request',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.school),
-                  label: 'tab 3',
+                  icon: Icon(Icons.person),
+                  label: 'Profile',
                 ),
               ],
             ),
           );
         },
       ),
-    );
-  }
-}
-
-class Tab1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Tab 1 Content'),
-    );
-  }
-}
-
-class Tab2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Tab 2 Content'),
-    );
-  }
-}
-
-class Tab3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('Welcome'),
-        BlocBuilder<HomeCubit, HomeState>(
-          buildWhen: (previous, current) {
-            return previous.isUserLoggedIn != current.isUserLoggedIn;
-          },
-          builder: (context, state) {
-            return ElevatedButton(
-              onPressed: () async {
-                await cubit.signOut();
-                if (!(state.isUserLoggedIn)) {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      MobileROutes.loginroute, (route) => false);
-                } else {
-                  debugPrint('Something went wrong...');
-                }
-              },
-              child: const Text('Sign Out'),
-            );
-          },
-        ),
-      ],
     );
   }
 }
