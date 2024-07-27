@@ -19,24 +19,26 @@ mixin _$SigninState {
   DataResource<UserCredential> get signInResource =>
       throw _privateConstructorUsedError;
   bool get isPasswordHidden => throw _privateConstructorUsedError;
+  String? get emailError => throw _privateConstructorUsedError;
+  String? get passwordError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            DataResource<UserCredential> signInResource, bool isPasswordHidden)
+    required TResult Function(DataResource<UserCredential> signInResource,
+            bool isPasswordHidden, String? emailError, String? passwordError)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+    TResult? Function(DataResource<UserCredential> signInResource,
+            bool isPasswordHidden, String? emailError, String? passwordError)?
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+    TResult Function(DataResource<UserCredential> signInResource,
+            bool isPasswordHidden, String? emailError, String? passwordError)?
         initial,
     required TResult orElse(),
   }) =>
@@ -70,7 +72,10 @@ abstract class $SigninStateCopyWith<$Res> {
       _$SigninStateCopyWithImpl<$Res, SigninState>;
   @useResult
   $Res call(
-      {DataResource<UserCredential> signInResource, bool isPasswordHidden});
+      {DataResource<UserCredential> signInResource,
+      bool isPasswordHidden,
+      String? emailError,
+      String? passwordError});
 }
 
 /// @nodoc
@@ -88,6 +93,8 @@ class _$SigninStateCopyWithImpl<$Res, $Val extends SigninState>
   $Res call({
     Object? signInResource = null,
     Object? isPasswordHidden = null,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
   }) {
     return _then(_value.copyWith(
       signInResource: null == signInResource
@@ -98,6 +105,14 @@ class _$SigninStateCopyWithImpl<$Res, $Val extends SigninState>
           ? _value.isPasswordHidden
           : isPasswordHidden // ignore: cast_nullable_to_non_nullable
               as bool,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -111,7 +126,10 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DataResource<UserCredential> signInResource, bool isPasswordHidden});
+      {DataResource<UserCredential> signInResource,
+      bool isPasswordHidden,
+      String? emailError,
+      String? passwordError});
 }
 
 /// @nodoc
@@ -127,6 +145,8 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? signInResource = null,
     Object? isPasswordHidden = null,
+    Object? emailError = freezed,
+    Object? passwordError = freezed,
   }) {
     return _then(_$InitialImpl(
       signInResource: null == signInResource
@@ -137,6 +157,14 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.isPasswordHidden
           : isPasswordHidden // ignore: cast_nullable_to_non_nullable
               as bool,
+      emailError: freezed == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      passwordError: freezed == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -146,7 +174,9 @@ class __$$InitialImplCopyWithImpl<$Res>
 class _$InitialImpl extends _Initial {
   const _$InitialImpl(
       {this.signInResource = const DataResource.inital(),
-      this.isPasswordHidden = true})
+      this.isPasswordHidden = true,
+      this.emailError = null,
+      this.passwordError = null})
       : super._();
 
   @override
@@ -155,10 +185,16 @@ class _$InitialImpl extends _Initial {
   @override
   @JsonKey()
   final bool isPasswordHidden;
+  @override
+  @JsonKey()
+  final String? emailError;
+  @override
+  @JsonKey()
+  final String? passwordError;
 
   @override
   String toString() {
-    return 'SigninState.initial(signInResource: $signInResource, isPasswordHidden: $isPasswordHidden)';
+    return 'SigninState.initial(signInResource: $signInResource, isPasswordHidden: $isPasswordHidden, emailError: $emailError, passwordError: $passwordError)';
   }
 
   @override
@@ -169,12 +205,16 @@ class _$InitialImpl extends _Initial {
             (identical(other.signInResource, signInResource) ||
                 other.signInResource == signInResource) &&
             (identical(other.isPasswordHidden, isPasswordHidden) ||
-                other.isPasswordHidden == isPasswordHidden));
+                other.isPasswordHidden == isPasswordHidden) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) ||
+                other.passwordError == passwordError));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, signInResource, isPasswordHidden);
+  int get hashCode => Object.hash(
+      runtimeType, signInResource, isPasswordHidden, emailError, passwordError);
 
   @JsonKey(ignore: true)
   @override
@@ -185,33 +225,35 @@ class _$InitialImpl extends _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            DataResource<UserCredential> signInResource, bool isPasswordHidden)
+    required TResult Function(DataResource<UserCredential> signInResource,
+            bool isPasswordHidden, String? emailError, String? passwordError)
         initial,
   }) {
-    return initial(signInResource, isPasswordHidden);
+    return initial(signInResource, isPasswordHidden, emailError, passwordError);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+    TResult? Function(DataResource<UserCredential> signInResource,
+            bool isPasswordHidden, String? emailError, String? passwordError)?
         initial,
   }) {
-    return initial?.call(signInResource, isPasswordHidden);
+    return initial?.call(
+        signInResource, isPasswordHidden, emailError, passwordError);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            DataResource<UserCredential> signInResource, bool isPasswordHidden)?
+    TResult Function(DataResource<UserCredential> signInResource,
+            bool isPasswordHidden, String? emailError, String? passwordError)?
         initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(signInResource, isPasswordHidden);
+      return initial(
+          signInResource, isPasswordHidden, emailError, passwordError);
     }
     return orElse();
   }
@@ -248,13 +290,19 @@ class _$InitialImpl extends _Initial {
 abstract class _Initial extends SigninState {
   const factory _Initial(
       {final DataResource<UserCredential> signInResource,
-      final bool isPasswordHidden}) = _$InitialImpl;
+      final bool isPasswordHidden,
+      final String? emailError,
+      final String? passwordError}) = _$InitialImpl;
   const _Initial._() : super._();
 
   @override
   DataResource<UserCredential> get signInResource;
   @override
   bool get isPasswordHidden;
+  @override
+  String? get emailError;
+  @override
+  String? get passwordError;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

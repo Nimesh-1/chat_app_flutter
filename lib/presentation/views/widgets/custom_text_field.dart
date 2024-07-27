@@ -37,7 +37,6 @@ class CustomTextField extends StatelessWidget {
                     isPasswordHidden ?? true
                         ? Icons.visibility_off
                         : Icons.visibility,
-                    color: Theme.of(context).primaryColorDark,
                   ),
                 )),
     );

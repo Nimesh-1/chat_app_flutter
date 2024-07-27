@@ -34,7 +34,7 @@ class UserCloudDatasourceImpl extends UserCloudDatasource {
   }
 
   @override
-  Future<void> updateUser(UserModel input) {
-    return _userService.updateUser(input);
+  Future<void> updateUser(UserModel input, String uid) {
+    return _userService.updateUser(input, uid);
   }
 }

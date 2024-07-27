@@ -8,8 +8,6 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:chat_app/domain/use%20cases/user_use_cases/get_user_usecase.dart'
-    as _i21;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -28,10 +26,10 @@ import '../../domain/use%20cases/user_use_cases/sign_out_usecase.dart' as _i16;
 import '../../domain/use%20cases/user_use_cases/sign_up_usecase.dart' as _i17;
 import '../../domain/use%20cases/user_use_cases/update_user_usecase.dart'
     as _i18;
-import '../../presentation/views/home/cubit/home_cubit.dart' as _i21;
+import '../../presentation/views/home/cubit/home_cubit.dart' as _i20;
 import '../../presentation/views/login/cubit/login_cubit.dart' as _i3;
 import '../../presentation/views/sign_in/cubit/signin_cubit.dart' as _i19;
-import '../../presentation/views/sign_up/cubit/signup_cubit.dart' as _i20;
+import '../../presentation/views/sign_up/cubit/signup_cubit.dart' as _i21;
 import '../../presentation/views/splash/cubit/splash_cubit.dart' as _i4;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -69,13 +67,13 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i18.UpdateUserUsecase(gh<_i12.UserRepository>()));
     gh.factory<_i19.SigninCubit>(
         () => _i19.SigninCubit(gh<_i15.SignInUsecase>()));
-    gh.factory<_i20.SignupCubit>(() => _i20.SignupCubit(
+    gh.factory<_i20.HomeCubit>(() => _i20.HomeCubit(
+          gh<_i16.SignOutUsecase>(),
+          gh<_i14.GetUserUsecase>(),
+        ));
+    gh.factory<_i21.SignupCubit>(() => _i21.SignupCubit(
           gh<_i17.SignUpUsecase>(),
           gh<_i18.UpdateUserUsecase>(),
-        ));
-    gh.factory<_i21.HomeCubit>(() => _i21.HomeCubit(
-          gh<_i16.SignOutUsecase>(),
-          gh<_i21.GetUserUsecase>(),
         ));
     return this;
   }

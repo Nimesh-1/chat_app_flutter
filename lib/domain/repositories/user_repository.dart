@@ -17,6 +17,7 @@ abstract class UserRepository {
 
   Future<void> updateUser(
     UserModel input,
+    String uid,
   );
 
   Future<UserEntity> getUser();

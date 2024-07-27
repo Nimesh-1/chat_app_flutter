@@ -17,6 +17,7 @@ abstract class UserService {
 
   Future<void> updateUser(
     UserModel input,
+    String uid,
   );
 
   Future<UserEntity> getUser();

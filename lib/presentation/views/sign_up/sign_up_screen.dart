@@ -59,21 +59,23 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(height: 14),
                     CustomButton(
                       onTap: () async {
-                        await cubit.createAccount();
-                        if (state.signUpResource.isSuccess()) {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
+                        try {
+                          await cubit.createAccount();
+                          if (state.signUpResource.isSuccess()) {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
                               MobileROutes.homeRoute,
-                              (Route<dynamic> route) => false);
-                        } else {
-                          debugPrint(state.signUpResource.failure?.message);
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                                state.signUpResource.failure?.message ?? ''),
-                            backgroundColor: Colors.green,
-                            elevation: 2,
-                            behavior: SnackBarBehavior.floating,
-                            margin: const EdgeInsets.all(16),
-                          ));
+                              (Route<dynamic> route) => false,
+                            );
+                          } else {
+                            _showErrorSnackBar(
+                                context,
+                                state.signUpResource.failure?.message ??
+                                    'Sign up failed');
+                          }
+                        } catch (e) {
+                          debugPrint('Error during account creation: $e');
+                          _showErrorSnackBar(context,
+                              'An error occurred while creating the account');
                         }
                       },
                       buttonText: 'Create Account',
@@ -87,5 +89,15 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _showErrorSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.redAccent,
+      elevation: 2,
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.all(16),
+    ));
   }
 }

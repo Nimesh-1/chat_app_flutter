@@ -26,6 +26,14 @@ class ProfileScreen extends StatelessWidget {
                     state.userResponse.data?.name ?? 'no Text',
                     style: const TextStyle(color: Colors.white),
                   ),
+                  Text(
+                    state.userResponse.data?.email ?? 'no Text',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    state.userResponse.data?.dob ?? 'no Text',
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 ],
               );
             },

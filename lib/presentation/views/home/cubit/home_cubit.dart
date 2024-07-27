@@ -4,6 +4,7 @@ import 'package:chat_app/domain/entities/user_entity.dart';
 import 'package:chat_app/domain/use%20cases/user_use_cases/get_user_usecase.dart';
 import 'package:chat_app/domain/use%20cases/user_use_cases/sign_out_usecase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -54,11 +55,12 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> signInUser() async {
+  Future<void> getUserData() async {
     emit(state.copyWith(userResponse: const DataResource.loading()));
     await _getUserUseCase.invoke(
         callback: (resource) {
           emit(state.copyWith(userResponse: resource));
+          debugPrint('Name : ${resource.data?.name}');
         },
         input: null);
   }

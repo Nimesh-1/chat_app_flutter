@@ -9,94 +9,86 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
-  var cubit = getIt<SigninCubit>();
+  final SigninCubit cubit = getIt<SigninCubit>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) {
-        return cubit;
-      },
+      create: (context) => cubit,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Sign In'),
           centerTitle: true,
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                CustomTextField(
-                  controller: cubit.emailController,
-                  label: 'email',
-                  hintText: 'enter email',
-                ),
-                const SizedBox(height: 16),
-                BlocBuilder<SigninCubit, SigninState>(
-                  builder: (context, state) {
-                    return CustomTextField(
+          child: BlocConsumer<SigninCubit, SigninState>(
+            listener: (context, state) {
+              if (state.signInResource.isSuccess()) {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  MobileROutes.homeRoute,
+                  (Route<dynamic> route) => false,
+                );
+              } else if (state.signInResource.isError()) {
+                _showErrorSnackBar(
+                  context,
+                  state.signInResource.failure?.message ?? 'Sign in failed',
+                );
+              }
+            },
+            builder: (context, state) {
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    CustomTextField(
+                      controller: cubit.emailController,
+                      label: 'Email',
+                      hintText: 'Enter email',
+                      errorText: state.emailError,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
                       controller: cubit.passwordController,
                       label: 'Password',
-                      hintText: 'enter Password',
+                      hintText: 'Enter password',
                       isPasswordHidden: state.isPasswordHidden,
                       onPasswordIconTap: cubit.passwordIconToggle,
-                    );
-                  },
-                ),
-                const SizedBox(height: 16),
-                BlocBuilder<SigninCubit, SigninState>(
-                  builder: (context, state) {
-                    return CustomButton(
+                      errorText: state.passwordError,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomButton(
                       onTap: () async {
-                        await cubit.signInUser();
-                        debugPrint(state.signInResource.data?.user?.uid);
-                        if (state.signInResource.isSuccess()) {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              MobileROutes.homeRoute,
-                              (Route<dynamic> route) => false);
-                        } else if (state.signInResource.isError()) {
-                          debugPrint(state.signInResource.failure?.message);
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                                state.signInResource.failure?.message ?? ''),
-                            backgroundColor: Colors.green,
-                            elevation: 2,
-                            behavior: SnackBarBehavior.floating,
-                            margin: const EdgeInsets.all(16),
-                          ));
+                        if (!cubit.isClosed) {
+                          try {
+                            await cubit.signInUser();
+                          } catch (e) {
+                            debugPrint('Error during sign in: $e');
+                            _showErrorSnackBar(
+                                context, 'An error occurred while signing in');
+                          }
                         }
                       },
                       isLoading: state.signInResource.isLoading(),
-                      buttonText: 'sign In',
+                      buttonText: 'Sign In',
                       buttonColor: Colors.blueAccent.shade100,
-                    );
-                  },
-                  // child: CustomButton(
-                  //   onTap: () async {
-                  //     var isLoggedIn = await cubit.signInUser();
-                  //   if (isLoggedIn == 'SignIn success') {
-                  //     Navigator.of(context).pushNamedAndRemoveUntil(
-                  //       MobileROutes.homeRoute,
-                  //       (Route<dynamic> route) => false,
-                  //     );
-                  //   } else {
-                  //     debugPrint(isLoggedIn);
-                  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  //       content: Text(isLoggedIn),
-                  //       backgroundColor: Colors.green,
-                  //       elevation: 2,
-                  //       behavior: SnackBarBehavior.floating,
-                  //       margin: EdgeInsets.all(5),
-                  //     ));
-                  //   }
-                  // },
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),
     );
+  }
+
+  void _showErrorSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Something went wrong'),
+      backgroundColor: Colors.redAccent,
+      elevation: 2,
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.all(16),
+    ));
   }
 }

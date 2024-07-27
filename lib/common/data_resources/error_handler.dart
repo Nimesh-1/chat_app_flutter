@@ -8,7 +8,8 @@ class ErrorHandler {
     if (error is FirebaseException) {
       return handleFirebaseError(error);
     } else {
-      return DataFailure('000', 'else in traceErrorException', error);
+      return DataFailure(
+          '000', 'else in traceErrorException', error.toString());
     }
   }
 

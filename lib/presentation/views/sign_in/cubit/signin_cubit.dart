@@ -20,6 +20,13 @@ class SigninCubit extends Cubit<SigninState> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> signInUser() async {
+    if (emailController.text.isEmpty) {
+      emit(state.copyWith(emailError: 'email cant be empty'));
+    }
+    if (passwordController.text.isEmpty) {
+      emit(state.copyWith(passwordError: 'password cant be empty'));
+    }
+
     emit(state.copyWith(signInResource: const DataResource.loading()));
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       // var isSignedIn = await _signInUseCase.signinWithEmailPassword(

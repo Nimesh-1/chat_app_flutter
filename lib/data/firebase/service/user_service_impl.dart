@@ -3,14 +3,18 @@ import 'package:chat_app/data/firebase/service/user_service.dart';
 import 'package:chat_app/data/models/user_model.dart';
 import 'package:chat_app/domain/entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UserService)
 class UserServiceImpl extends UserService {
   @override
   Future<UserEntity> getUser() async {
-    var documentSnapshot =
-        await FirestoreDatabaseReference.currentUserRef().get();
+    debugPrint("uid : ${FirestoreDatabaseReference.getUserId()}");
+    var documentSnapshot = await FirestoreDatabaseReference.usersColRef()
+        .doc(FirestoreDatabaseReference.getUserId())
+        .get();
+    debugPrint('documentSnapshot :${documentSnapshot.get('name')}');
     var user = UserModel.fromSnapshot(documentSnapshot);
     return user;
   }
@@ -68,9 +72,9 @@ class UserServiceImpl extends UserService {
   }
 
   @override
-  Future<void> updateUser(UserModel input) async {
+  Future<void> updateUser(UserModel input, String uid) async {
     await FirestoreDatabaseReference.usersColRef()
-        .doc('is')
+        .doc()
         .set(input.toDocument());
   }
 }

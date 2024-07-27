@@ -42,16 +42,23 @@ class SignupCubit extends Cubit<SignupState> {
         nameController.text.isNotEmpty &&
         dobController.text.isNotEmpty) {
       await _signUpUsecase.invoke(
-        callback: (response) async {
-          if (response.isSuccess()) {
-            emit(state.copyWith(signUpResource: response));
+        callback: (signUpResponse) async {
+          if (signUpResponse.isSuccess()) {
             await _updateUserUsecase.invoke(
-                callback: (response) {},
-                input: UserModel(
+              callback: (response) {
+                if (response.isSuccess()) {
+                  emit(state.copyWith(signUpResource: signUpResponse));
+                }
+              },
+              input: UpdateUserInput(
+                UserModel(
                   name: nameController.text,
                   email: emailController.text,
                   dob: dobController.text,
-                ));
+                ),
+                signUpResponse.data?.user?.uid ?? "",
+              ),
+            );
           }
         },
         input: SignUpWithEmailInput(
@@ -60,7 +67,7 @@ class SignupCubit extends Cubit<SignupState> {
         ),
       );
     } else {
-      debugPrint('Enter email and Password');
+      debugPrint('Enter email or password');
     }
   }
 }

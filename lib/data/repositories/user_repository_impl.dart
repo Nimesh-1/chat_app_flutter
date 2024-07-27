@@ -41,7 +41,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<void> updateUser(UserModel input) {
-    return cloudDatasource.updateUser(input);
+  Future<void> updateUser(UserModel input, String uid) {
+    return cloudDatasource.updateUser(input, uid);
   }
 }
